@@ -1,5 +1,19 @@
 //------------------------------VARIATIONS----------------------------------------------------------------
-#ifndef VARIATIONS_H
-#define VARIATIONS_H
-void variations (int myGuess, int secret);
-#endif
+
+void variations (int myGuess, int secret)
+{
+    if (myGuess < secret)
+    {
+        cout<<"Too low, ";
+    }
+    else if (myGuess > secret)
+    {
+        cout<<"Too high, ";
+    }
+    cout<<"try again!"<<endl;
+    
+    if (myGuess == 9999)
+    {
+        cout<<endl<<"The secret is "<<secret<<endl;
+    } 
+}

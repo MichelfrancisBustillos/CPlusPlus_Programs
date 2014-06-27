@@ -2,22 +2,28 @@
 
 #include<iostream>
 #include<fstream>
+#include<iomanip>
 
 using namespace std;
 
 int main()
 {
-    string nameFirst, nameLast, sent, dummy;
-    int cont;
-    float wage, hours;
-    int count = 0;
+    string name, dummy;
+    float wage = 0, hours = 0;
     ifstream fin;
     
     fin.open("PAYROLL.dat");
     
-    while(getline(fin, sent))
+    for(int cont = 4; cont > 0; cont--)
     {
-        cout<<sent<<endl;
+        getline(fin, name);
+        cout<<name<<" ";
+        fin>>wage;
+        cout<<"$"<<fixed<<setprecision(2)<<wage;
+        fin>>hours;
+        cout<<setprecision(0)<<" "<<hours;
+        getline(fin, dummy);
+        cout<<endl;
     }
     
     fin.close();

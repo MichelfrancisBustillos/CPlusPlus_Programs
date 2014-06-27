@@ -21,7 +21,7 @@ int main()
     
     while (count <= cont)
     {
-        random = rand() % 10 + 1;
+        random = rand() % 100 + 1;
         fout<<random<<" ";
         count++;
     }

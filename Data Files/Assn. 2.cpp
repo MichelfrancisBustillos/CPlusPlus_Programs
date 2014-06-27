@@ -21,13 +21,13 @@ int main()
     while (count < cont)
     {
         cout<<"Enter employee's name: ", cin>>nameFirst, cin>>nameLast, cout<<endl;
-        fout<<nameFirst<<" "<<nameLast<<" ";
+        fout<<nameFirst<<" "<<nameLast;
         
         cout<<"Enter hourly wage: ", cin>>wage, cout<<endl;
-        fout<<"$"<<wage<<" ";
+        fout<<endl<<wage;
         
         cout<<"Enter hours worked: ", cin>>hours, cout<<endl;
-        fout<<hours<<endl;
+        fout<<endl<<hours<<endl;
         
         system("CLS");
         
