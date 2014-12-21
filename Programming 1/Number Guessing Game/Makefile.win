@@ -1,0 +1,48 @@
+# Project: NumberGameTesting
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = game1.o game3.o leaderBoard.o "NumberGame\ Testing.o" replay.o variations.o game2.o $(RES)
+LINKOBJ  = game1.o game3.o leaderBoard.o "NumberGame Testing.o" replay.o variations.o game2.o $(RES)
+LIBS =  -L"E:/Programming/Dev-Cpp/lib"  
+INCS =  -I"E:/Programming/Dev-Cpp/include" 
+CXXINCS =  -I"E:/Programming/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"E:/Programming/Dev-Cpp/include/c++/3.4.2/backward"  -I"E:/Programming/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"E:/Programming/Dev-Cpp/include/c++/3.4.2"  -I"E:/Programming/Dev-Cpp/include" 
+BIN  = NumberGameTesting.exe
+CXXFLAGS = $(CXXINCS)  
+CFLAGS = $(INCS)  
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before NumberGameTesting.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "NumberGameTesting.exe" $(LIBS)
+
+game1.o: game1.cpp
+	$(CPP) -c game1.cpp -o game1.o $(CXXFLAGS)
+
+game3.o: game3.cpp
+	$(CPP) -c game3.cpp -o game3.o $(CXXFLAGS)
+
+leaderBoard.o: leaderBoard.cpp
+	$(CPP) -c leaderBoard.cpp -o leaderBoard.o $(CXXFLAGS)
+
+"NumberGame\ Testing.o": NumberGame\ Testing.cpp
+	$(CPP) -c "NumberGame Testing.cpp" -o "NumberGame Testing.o" $(CXXFLAGS)
+
+replay.o: replay.cpp
+	$(CPP) -c replay.cpp -o replay.o $(CXXFLAGS)
+
+variations.o: variations.cpp
+	$(CPP) -c variations.cpp -o variations.o $(CXXFLAGS)
+
+game2.o: game2.cpp
+	$(CPP) -c game2.cpp -o game2.o $(CXXFLAGS)
