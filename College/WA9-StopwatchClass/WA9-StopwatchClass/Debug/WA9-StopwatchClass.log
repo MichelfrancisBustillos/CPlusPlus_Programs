@@ -1,0 +1,8 @@
+﻿  StopWatch.cpp
+c:\users\miche\desktop\school\college\c++ programming language\wa9-stopwatchclass\wa9-stopwatchclass\stopwatch.cpp(14): warning C4244: 'initializing': conversion from 'double' to 'time_t', possible loss of data
+c:\users\miche\desktop\school\college\c++ programming language\wa9-stopwatchclass\wa9-stopwatchclass\stopwatch.cpp(21): warning C4244: 'initializing': conversion from 'time_t' to 'int', possible loss of data
+c:\users\miche\desktop\school\college\c++ programming language\wa9-stopwatchclass\wa9-stopwatchclass\stopwatch.cpp(22): warning C4244: 'initializing': conversion from 'time_t' to 'int', possible loss of data
+c:\users\miche\desktop\school\college\c++ programming language\wa9-stopwatchclass\wa9-stopwatchclass\stopwatch.cpp(27): warning C4244: 'initializing': conversion from 'time_t' to 'int', possible loss of data
+c:\users\miche\desktop\school\college\c++ programming language\wa9-stopwatchclass\wa9-stopwatchclass\stopwatch.cpp(28): warning C4244: 'initializing': conversion from 'time_t' to 'int', possible loss of data
+c:\users\miche\desktop\school\college\c++ programming language\wa9-stopwatchclass\wa9-stopwatchclass\stopwatch.cpp(29): warning C4244: 'initializing': conversion from 'time_t' to 'int', possible loss of data
+  WA9-StopwatchClass.vcxproj -> C:\Users\miche\Desktop\School\College\C++ Programming Language\WA9-StopwatchClass\Debug\WA9-StopwatchClass.exe
