@@ -4,52 +4,50 @@
 #include <chrono> 
 #include <windows.h>
 #include <conio.h>
+#include <limits>
 
 using namespace std;
 
-void initializeBoard(char pB[][3]);
-void printBoard(char pB[][3], bool truths[][3]);
-bool isBoardSolved(char pB[][3], bool truths[][3]);
-void slideTile(char pB[][3], char move);
-void scrambleBoard(char pB[][3]);
+CONST int arrayLength = 3;
+
+void initializeBoard(char pB[][arrayLength]);
+void printBoard(char pB[][arrayLength], bool truths[][arrayLength]);
+bool isBoardSolved(char pB[][arrayLength], bool truths[][arrayLength]);
+void slideTile(char pB[][arrayLength], char move);
+void scrambleBoard(char pB[][arrayLength]);
 
 int main()
 {
-	char pB[3][3];
-	bool truths[3][3];
+	char pB[arrayLength][arrayLength];
+	bool truths[arrayLength][arrayLength];
 
 	initializeBoard(pB);
 	isBoardSolved(pB, truths);
 	printBoard(pB, truths);
-	if (isBoardSolved(pB, truths) == true)
+	bool solved = isBoardSolved(pB, truths);
+	if (solved)
 	{
 		cout << "isBoardSolved(): true" << endl;
 	}
-	else if (isBoardSolved(pB, truths) == false)
+	else
 	{
 		cout << "isBoardSolved(): false" << endl;
 	}
-	system("PAUSE");
+	cout << "Press ENTER to continue...";
+	cin.get();
 	cout << "Scrambling board..." << endl;
 	scrambleBoard(pB);
 	isBoardSolved(pB, truths);
 	printBoard(pB, truths);
 	cout << "Scrambling complete." << endl;
-	system("PAUSE");
+	cout << "Press ENTER to continue...";
+	cin.get();
 
-	system("CLS");
+	cout << "\033[2J\033[1;1H";
 	printBoard(pB, truths);
 
 	char move = ' ';
 	bool check = false;
-	if (check == true)
-	{
-		cout << "isBoardSolved(): true" << endl << endl;
-	}
-	else if (check == false)
-	{
-		cout << "isBoardSolved(): false" << endl << endl;
-	}
 
 	int key = 0;
 	while ((move != 27) && (check != true))
@@ -57,20 +55,20 @@ int main()
 		cout << "Use arrow keys or WASD to move tiles. Press 'Esc' to quit" << endl;
 		move = _getch();
 		slideTile(pB, move);
-		system("CLS");
+		cout << "\033[2J\033[1;1H";
 		check = isBoardSolved(pB, truths);
 		printBoard(pB, truths);
-		if (check == true)
+		if (check)
 		{
 			cout << "isBoardSolved(): true" << endl << endl;
 		}
-		else if (check == false)
+		else
 		{
 			cout << "isBoardSolved(): false" << endl << endl;
 		}
 	}
 
-	if (check == true)
+	if (check)
 	{
 		cout << "You won!!" << endl;
 	}
@@ -84,7 +82,7 @@ int main()
 	return 0;
 }
 
-void initializeBoard(char pB[][3])
+void initializeBoard(char pB[][arrayLength])
 {
 	int count = 49;
 	for (int c = 0; c <= 2; c++)
@@ -98,7 +96,7 @@ void initializeBoard(char pB[][3])
 	pB[2][2] = '*';
 }
 
-void printBoard(char pB[][3], bool truths[][3])
+void printBoard(char pB[][arrayLength], bool truths[][arrayLength])
 {
 	HANDLE hConsole;
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -108,11 +106,11 @@ void printBoard(char pB[][3], bool truths[][3])
 	{
 		for (int d = 0; d <= 2; d++)
 		{
-			if (truths[c][d] == true)
+			if (truths[c][d])
 			{
 				SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | BACKGROUND_RED | BACKGROUND_BLUE | BACKGROUND_GREEN);
 			}
-			else if (truths[c][d] == false)
+			else
 			{
 				SetConsoleTextAttribute(hConsole, FOREGROUND_RED | BACKGROUND_RED | BACKGROUND_BLUE | BACKGROUND_GREEN);
 			}
@@ -124,9 +122,9 @@ void printBoard(char pB[][3], bool truths[][3])
 	SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 }
 
-bool isBoardSolved(char pB[][3], bool truths[][3])
+bool isBoardSolved(char pB[][arrayLength], bool truths[][arrayLength])
 {
-	char correctBoard[3][3] = { { '1','2','3' },{ '4','5','6' },{ '7','8','*' } };
+	char correctBoard[arrayLength][arrayLength] = { { '1','2','3' },{ '4','5','6' },{ '7','8','*' } };
 	bool proof = true;
 
 	for (int c = 0; c <= 2; c++)
@@ -148,10 +146,14 @@ bool isBoardSolved(char pB[][3], bool truths[][3])
 	return proof;
 }
 
-void slideTile(char pB[][3], char move)
+void slideTile(char pB[][arrayLength], char move)
 {
 	int x = 0;
 	int y = 0;
+	CONST int downKey = 80;
+	CONST int upKey = 72;
+	CONST int rightKey = 77;
+	CONST int leftKey = 75;
 
 	for (int c = 0; c <= 2; c++)
 	{
@@ -169,7 +171,7 @@ void slideTile(char pB[][3], char move)
 	{
 	case 's':
 	case 'S':
-	case 80:
+	case downKey:
 		if (x != 0)
 		{
 			pB[x][y] = pB[x - 1][y];
@@ -178,7 +180,7 @@ void slideTile(char pB[][3], char move)
 		break;
 	case 'w':
 	case 'W':
-	case 72:
+	case upKey:
 		if (x != 2)
 		{
 			pB[x][y] = pB[x + 1][y];
@@ -187,7 +189,7 @@ void slideTile(char pB[][3], char move)
 		break;
 	case 'd':
 	case 'D':
-	case 77:
+	case rightKey:
 		if (y != 0)
 		{
 			pB[x][y] = pB[x][y - 1];
@@ -196,7 +198,7 @@ void slideTile(char pB[][3], char move)
 		break;
 	case 'a':
 	case 'A':
-	case 75:
+	case leftKey:
 		if (y != 2)
 		{
 			pB[x][y] = pB[x][y + 1];
@@ -209,7 +211,7 @@ void slideTile(char pB[][3], char move)
 	}
 }
 
-void scrambleBoard(char pB[][3])
+void scrambleBoard(char pB[][arrayLength])
 {
 	char items[9] = { '1','2','3','4','5','6','7','8','*' };
 	unsigned seed = chrono::system_clock::now().time_since_epoch().count();
