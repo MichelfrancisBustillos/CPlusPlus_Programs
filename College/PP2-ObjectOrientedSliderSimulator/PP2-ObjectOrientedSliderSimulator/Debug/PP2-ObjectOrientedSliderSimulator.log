@@ -1,5 +1,0 @@
-﻿  slider.cpp
-c:\users\miche\desktop\school\college\c++ programming language\pp2-objectorientedslidersimulator\pp2-objectorientedslidersimulator\slider.cpp(197): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  main.cpp
-  Generating Code...
-  PP2-ObjectOrientedSliderSimulator.vcxproj -> C:\Users\miche\Desktop\School\College\C++ Programming Language\PP2-ObjectOrientedSliderSimulator\Debug\PP2-ObjectOrientedSliderSimulator.exe
